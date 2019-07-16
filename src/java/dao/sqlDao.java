@@ -19,7 +19,8 @@ import negocio.Usuario;
  */
 public class sqlDao {
     	private static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
-	private static final String DB_URI = "jdbc:hsqldb:hsql://localhost/";
+//	private static final String DB_URI = "jdbc:hsqldb:hsql://localhost/";
+        private static final String DB_URI = "jdbc:hsqldb:file:teste";
 	private static final String DB_USER = "SA";
 	private static final String DB_PWD = "";
 	private static final String FIND_ALL = "SELECT * FROM USUARIOS";

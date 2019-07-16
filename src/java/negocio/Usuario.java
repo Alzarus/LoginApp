@@ -8,20 +8,23 @@ package negocio;
 import java.sql.SQLException;
 
 import dao.sqlDao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author pedro
  */
 public class Usuario {
 
-    public Usuario(String id, String pwd){
-        this.setId(id);
-        this.setPwd(pwd);
+    public Usuario(String id, String pwd) throws SQLException{
+        try {
+            this.sql = new sqlDao();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    public boolean existsOnDatabase() throws SQLException, ClassNotFoundException{
-        sqlDao sql = new sqlDao();
-        
+    public boolean existsOnDatabase() throws SQLException{
         if(sql.find(this))
             return true;
         return false;
@@ -45,5 +48,6 @@ public class Usuario {
     
     private String id;
     private String pwd;
+    private sqlDao sql;
     
 }

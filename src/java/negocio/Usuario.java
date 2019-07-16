@@ -5,9 +5,9 @@
  */
 package negocio;
 
-import dao.sqlDao;
 import java.sql.SQLException;
 
+import dao.sqlDao;
 /**
  *
  * @author pedro

@@ -14,7 +14,13 @@
     <body>
         <jsp:useBean id="usuario" class="negocio.Usuario" scope="session"/>
         <jsp:setProperty name="usuario" property="*"/>
-        
+        <h1><%
+            if(usuario.existsOnDatabase()){
+                out.println("O usuário está cadastrado no banco!");
+            } else {
+                out.println("O usuário não está cadastrado no banco!");
+            }
+        %></h1>
         
         <form action = "Login.jsp" method="POST">
             ID:<br>

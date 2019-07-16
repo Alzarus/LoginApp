@@ -5,3 +5,4 @@ COMMIT
 create table usuarios(\u000aid varchar(255) not null primary key,\u000apwd varchar(255) not null)
 INSERT INTO USUARIOS VALUES('root','root')
 COMMIT
+DISCONNECT

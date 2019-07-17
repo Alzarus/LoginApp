@@ -18,13 +18,13 @@ import negocio.Usuario;
  * @author pedro
  */
 public class sqlDao {
-        private static final String DB_URI = "jdbc:derby://localhost:1527/test";
+        private static final String DB_URL = "jdbc:derby://localhost:1527/test";
         private static final String DRIVER_NAME = "org.apache.derby.jdbc.ClientDriver";
         private static final String DB_USER = "test";
         private static final String DB_PWD = "test";
 //    	private static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
-//	private static final String DB_URI = "jdbc:hsqldb:hsql://localhost/";
-//        private static final String DB_URI = "jdbc:hsqldb:file:teste";
+//	private static final String DB_URL = "jdbc:hsqldb:hsql://localhost/";
+//        private static final String DB_URL = "jdbc:hsqldb:file:teste";
 //	private static final String DB_USER = "SA";
 //	private static final String DB_PWD = "";
 	private static final String FIND_ALL = "SELECT * FROM USUARIOS";
@@ -35,7 +35,7 @@ public class sqlDao {
 	}
         
         private Connection getConnection() throws SQLException {
-            return DriverManager.getConnection(sqlDao.DB_URI, sqlDao.DB_USER, sqlDao.DB_PWD);
+            return DriverManager.getConnection(sqlDao.DB_URL, sqlDao.DB_USER, sqlDao.DB_PWD);
 	}
         
         public boolean find(Usuario user) throws SQLException{
@@ -50,7 +50,7 @@ public class sqlDao {
             
             stmt.close();
             
-            if(rSet != null){
+            if(rSet.next()){
                 rSet.close();
                 return true;
             }

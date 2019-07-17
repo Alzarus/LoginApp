@@ -20,18 +20,16 @@ public class Usuario {
         instantiateDao();
     }
     
-    public void instantiateDao() {
+    private void instantiateDao(){
         try {
             this.sql = new sqlDao();
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }        
     }
     
     public boolean existsOnDatabase() throws SQLException{
-        if(sql.find(this))
-            return true;
-        return false;
+        return sql.find(this);
     }
 
     public String getId() {

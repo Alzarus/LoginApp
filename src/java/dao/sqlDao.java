@@ -22,13 +22,8 @@ public class sqlDao {
         private static final String DRIVER_NAME = "org.apache.derby.jdbc.ClientDriver";
         private static final String DB_USER = "test";
         private static final String DB_PWD = "test";
-//    	private static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
-//	private static final String DB_URL = "jdbc:hsqldb:hsql://localhost/";
-//        private static final String DB_URL = "jdbc:hsqldb:file:teste";
-//	private static final String DB_USER = "SA";
-//	private static final String DB_PWD = "";
-	private static final String FIND_ALL = "SELECT * FROM USUARIOS";
-        private static final String FIND_SPECIFIC = "SELECT * FROM USUARIOS WHERE ID = ? AND PWD = ?";
+	private static final String FIND_ALL = "SELECT * FROM TEST.USUARIOS";
+        private static final String FIND_SPECIFIC = "SELECT * FROM TEST.USUARIOS WHERE ID = ? AND PWD = ?";
         
         public sqlDao() throws SQLException, ClassNotFoundException {
             Class.forName(sqlDao.DRIVER_NAME);
@@ -42,20 +37,27 @@ public class sqlDao {
             String id = user.getId();
             String pwd = user.getPwd();
             
-            PreparedStatement stmt = this.getConnection().prepareStatement(sqlDao.FIND_SPECIFIC);
-            stmt.setString(1, id);
-            stmt.setString(2, pwd);
-            
-            ResultSet rSet = stmt.executeQuery();
-            
-            stmt.close();
-            
-            if(rSet.next()){
-                rSet.close();
-                return true;
+            ResultSet rSet;
+            try (PreparedStatement stmt = this.getConnection().prepareStatement(sqlDao.FIND_SPECIFIC)) {
+                stmt.setString(1, id);
+                stmt.setString(2, pwd);
+                rSet = stmt.executeQuery();
             }
-            rSet.close();
-            return false;
+            
+            return rSet.next();
+            
+//            if(rSet.next()){
+//                rSet.close();
+//                return true;
+//            }
+//            rSet.close();
+//            return false;
             
         }
+        
+//      private static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
+//	private static final String DB_URL = "jdbc:hsqldb:hsql://localhost/";
+//      private static final String DB_URL = "jdbc:hsqldb:file:teste";
+//	private static final String DB_USER = "SA";
+//	private static final String DB_PWD = "";
 }

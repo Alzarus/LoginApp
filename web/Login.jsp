@@ -12,7 +12,7 @@
         <title>LoginApp</title>
     </head>
     <body>
-        <jsp:useBean id="usuario" class="negocio.Usuario" scope="session"/>
+        <jsp:useBean id="usuario" class="negocio.Usuario" scope="page"/>
         <jsp:setProperty name="usuario" property="*"/>
         <h1><%
             if(usuario.existsOnDatabase()){

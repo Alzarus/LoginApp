@@ -18,11 +18,15 @@ import negocio.Usuario;
  * @author pedro
  */
 public class sqlDao {
-    	private static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
+        private static final String DB_URI = "jdbc:derby://localhost:1527/test";
+        private static final String DRIVER_NAME = "org.apache.derby.jdbc.ClientDriver";
+        private static final String DB_USER = "test";
+        private static final String DB_PWD = "test";
+//    	private static final String DRIVER_NAME = "org.hsqldb.jdbcDriver";
 //	private static final String DB_URI = "jdbc:hsqldb:hsql://localhost/";
-        private static final String DB_URI = "jdbc:hsqldb:file:teste";
-	private static final String DB_USER = "SA";
-	private static final String DB_PWD = "";
+//        private static final String DB_URI = "jdbc:hsqldb:file:teste";
+//	private static final String DB_USER = "SA";
+//	private static final String DB_PWD = "";
 	private static final String FIND_ALL = "SELECT * FROM USUARIOS";
         private static final String FIND_SPECIFIC = "SELECT * FROM USUARIOS WHERE ID = ? AND PWD = ?";
         

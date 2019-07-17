@@ -22,14 +22,14 @@
             }
         %></h1>
         
-        <a href="index.html">VOLTAR</a>
+        <!--<a href="index.html">VOLTAR</a>-->
         
-<!--        <form action = "Login.jsp" method="POST">
+        <form action = "Login.jsp" method="POST">
             ID:<br>
             <input type="text" name="id"/><br>
             Senha:<br>
             <input type="password" name="pwd"/><br>
             <input type="submit" name="bt" value="Login"/>
-        </form>-->
+        </form>
     </body>
 </html>

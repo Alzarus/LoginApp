@@ -16,10 +16,14 @@ import java.util.logging.Logger;
  */
 public class Usuario {
 
-    public Usuario(String id, String pwd) throws SQLException{
+    public Usuario(){
+        instantiateDao();
+    }
+    
+    public void instantiateDao() {
         try {
             this.sql = new sqlDao();
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
